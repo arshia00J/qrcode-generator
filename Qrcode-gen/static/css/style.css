@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap");
+
+body {
+  background-color: #f8f9fa;
+  font-family: "Vazirmatn", sans-serif;
+}
+.container {
+  margin-top: 50px;
+}
+.card {
+  padding: 20px;
+}
+.btn-generate {
+  margin-top: 10px;
+}
+.qrcode-img {
+  max-width: 100%;
+}
+footer {
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+svg {
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
+}

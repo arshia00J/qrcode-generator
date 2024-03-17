@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <!-- Title -->
+            <h1 class="text-center">QR Code Generator</h1>
+            <form action="/generate_qrcode" method="POST">
+              <div class="form-group">
+                <!-- Input Label -->
+                <label for="link">Enter a link:</label>
+                <!-- Input Field -->
+                <input
+                  type="text"
+                  class="form-control"
+                  id="link"
+                  name="link"
+                  required
+                  placeholder="e.g. https://example.com/ or example.com"
+                />
+              </div>
+              <div class="text-center">
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-generate">
+                  Generate QR Code
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="text-center mt-3">
+            <!-- Display QR Code if available -->
+            {% if qr_code %}
+            <img src="{{ qr_code }}" class="qrcode-img" alt="QR Code" />
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative Backgrounds -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#E0F5F5"
+        fill-opacity="1"
+        d="M0,128L80,144C160,160,320,192,480,218.7C640,245,800,267,960,250.7C1120,235,1280,181,1360,154.7L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+      ></path>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#A7E2E3"
+        fill-opacity="1"
+        d="M0,224L26.7,218.7C53.3,213,107,203,160,208C213.3,213,267,235,320,229.3C373.3,224,427,192,480,149.3C533.3,107,587,53,640,69.3C693.3,85,747,171,800,218.7C853.3,267,907,277,960,277.3C1013.3,277,1067,267,1120,224C1173.3,181,1227,107,1280,101.3C1333.3,96,1387,160,1413,192L1440,224L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
+      ></path>
+    </svg>
+
+    <!-- Copyright Footer -->
+    <footer class="text-center">
+      &copy; <span id="currentYear"></span> Arshia Jafari. All Rights Reserved.
+    </footer>
+
+    <!-- Display Current Year -->
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
